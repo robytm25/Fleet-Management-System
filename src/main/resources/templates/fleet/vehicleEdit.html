@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="_layout" xmlns="http://www.w3.org/1999/html">
+
+<body>
+
+<div layout:fragment="content">
+    <div class="row">
+        <div class="col-lg-12">
+            <h3 class="page-header"><i class="fa fa-laptop breadcrumb-item"></i> Vehicle Editing</h3>
+            <ol class="breadcrumb">
+                <li class="fa fa-home breadcrumb-item"><a th:href="@{/index}">Home</a></li>
+                <li class="fa fa-laptop breadcrumb-item"><a th:href="@{/fleet}">Fleet Home</a></li>
+                <li class="fa fa-laptop breadcrumb-item"><a onclick="return confirm('Are you sure you want to ' +
+                     'exit without save?')" th:href="@{/vehicles}">Vehicles</a></li>
+                <li class="fa fa-laptop breadcrumb-item">Editing</li>
+            </ol>
+        </div>
+    </div>
+    <div class="container" style="width: 70%">
+        <div class="row">
+            <div class="col-lg-12">
+                <header class="panel-heading">
+                    <h2>Editing Vehicle Record</h2>
+                </header>
+                <section class="panel">
+                    <div class="panel-body">
+                        <form class="form-horizontal " th:action="@{'/vehicles/update/'+${vehicle.id}}" method="put">
+
+                            <div class="form-group">
+                                <label class="control-label col-sm-4">Name</label>
+                                <div class="col-sm-12">
+                                    <input name="name"  th:value="${vehicle.name}" type="text" class="form-control">
+                                </div>
+                            </div>
+
+                            <div class="col-lg-12">
+                                <div class="form-group">
+                                    <label for="ddlTypeAdd" class="col-sm-4 col-form-label">Type</label>
+                                    <div class="col-sm-12">
+                                        <select class="form-control" id="ddlTypeAdd" name="vehicletypeid">
+                                            <option>-SELECT-</option>
+                                            <option th:each="vehicleType : ${vehicleTypes}"
+                                                    th:value="${vehicleType.id}"
+                                                    th:selected="(${vehicleType.id} == ${vehicle.vehicletypeid}?True: False)"
+                                                    th:text="${vehicleType.description}">
+                                            </option>
+                                        </select>
+                                    </div>
+                                </div>
+
+                            <div class="form-group">
+                                <label class="control-label col-sm-4">Vehicle Number</label>
+                                <div class="col-sm-12">
+                                    <input name="vehicleNumber"  th:value="${vehicle.vehicleNumber}" class="form-control" size="16" type="text">
+                                </div>
+                            </div>
+
+                                <div class="form-group">
+                                    <label class="col-sm-4 col-form-label">Registration Date</label>
+                                    <div class="col-sm-12">
+                                        <input type=Date  th:value="${vehicle.registrationDate}" class="form-control" name="registrationDate"
+                                               id="registrationDate"/>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="col-sm-4 col-form-label">Acquisition Date</label>
+                                    <div class="col-sm-12">
+                                        <input type=Date th:value="${vehicle.acquisitionDate}"  class="form-control" name="acquisitionDate"
+                                               id="acquisitionDate"/>
+                                    </div>
+                                </div>
+
+                                <div class="col-lg-12">
+                                    <div class="form-group">
+                                        <label for="ddlMakeAdd" class="col-sm-4 col-form-label">Vehicle Make</label>
+                                        <div class="col-sm-12">
+                                            <select class="form-control" id="ddlMakeAdd" name="vehiclemakeid">
+                                                <option>-SELECT-</option>
+                                                <option th:each="vehicleMake : ${vehicleMakes}"
+                                                        th:value="${vehicleMake.id}"
+                                                        th:selected="(${vehicleMake.id} == ${vehicle.vehiclemakeid}?True: False)"
+                                                        th:text="${vehicleMake.description}">
+                                                </option>
+                                            </select>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label class="control-label col-sm-4">Vehicle Power</label>
+                                        <div class="col-sm-12">
+                                            <input name="power"  th:value="${vehicle.power}" class="form-control" size="16" type="text">
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label class="control-label col-sm-4">Fuel Capacity</label>
+                                        <div class="col-sm-12">
+                                            <input name="fuelCapacity"  th:value="${vehicle.fuelCapacity}" class="form-control" size="16" type="text">
+                                        </div>
+                                    </div>
+
+                                    <div class="col-lg-12">
+                                        <div class="form-group">
+                                            <label for="ddlStatusAdd" class="col-sm-4 col-form-label">Vehicle Status</label>
+                                            <div class="col-sm-12">
+                                                <select class="form-control" id="ddlStatusAdd" name="vehicleStatus">
+                                                    <option>-SELECT-</option>
+                                                    <option th:each="vehicleStatus : ${vehicleStatuses}"
+                                                            th:value="${vehicleStatus.id}"
+                                                            th:selected="(${vehicleStatus.id} == ${vehicle.vehiclestatusid}?True: False)"
+                                                            th:text="${vehicleStatus.description}">
+                                                    </option>
+                                                </select>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label class="control-label col-sm-4">Net Weight</label>
+                                            <div class="col-sm-12">
+                                                <input name="netWeight"  th:value="${vehicle.netWeight}" class="form-control" size="16" type="text">
+                                            </div>
+                                        </div>
+
+                                        <div class="col-lg-12">
+                                            <div class="form-group">
+                                                <label for="ddlEmployeeAdd" class="col-sm-4 col-form-label">In Charge</label>
+                                                <div class="col-sm-12">
+                                                    <select class="form-control" id="ddlEmployeeAdd" name="inCharge">
+                                                        <option>-SELECT-</option>
+                                                        <option th:each="employee : ${employees}"
+                                                                th:value="${employee.id}"
+                                                                th:selected="(${employee.id} == ${vehicle.employeeid}?True: False)"
+                                                                th:text="${employee.fullName}">
+                                                        </option>
+                                                    </select>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-lg-12">
+                                                <div class="form-group">
+                                                    <label for="ddlModelAdd" class="col-sm-4 col-form-label">Model</label>
+                                                    <div class="col-sm-12">
+                                                        <select class="form-control" id="ddlModelAdd" name="vehicleModel">
+                                                            <option>-SELECT-</option>
+                                                            <option th:each="vehicleModel : ${vehicleModels}"
+                                                                    th:value="${vehicleModel.id}"
+                                                                    th:selected="(${vehicleModel.id} == ${vehicle.vehiclemodelid}?True: False)"
+                                                                    th:text="${vehicleModel.description}">
+                                                            </option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-lg-12">
+                                                    <div class="form-group">
+                                                        <label for="ddlLocationAdd" class="col-sm-4 col-form-label">Current Location</label>
+                                                        <div class="col-sm-12">
+                                                            <select class="form-control" id="ddlLocationAdd" name="currentLocation">
+                                                                <option>-SELECT-</option>
+                                                                <option th:each="location : ${locations}"
+                                                                        th:value="${location.id}"
+                                                                        th:selected="(${location.id} == ${vehicle.locationid}?True: False)"
+                                                                        th:text="${location.city}">
+                                                                </option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+
+
+                            &nbsp;
+                            <section class="panel">
+                                <div class="panel-body">
+                                    <button type="submit" th:href="@{/vehicleAdd}" class="btn btn-success">Save</button>
+                                    <a th:href="@{/vehicles}" class="btn btn-warning">Exit</a>
+                                </div>
+                            </section>
+                        </form>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

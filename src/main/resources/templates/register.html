@@ -1,0 +1,49 @@
+
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+ xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3" lang="en">
+
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <script th:src="@{/assets/js/register.js}"></script>
+    <link th:href="@{assets/css/registerPage.css}" rel="stylesheet">
+
+<body>
+<div class="bg-img">
+    <div style="text-align: center; font-size:30px; color:lawngreen; font-weight: bold;">
+            <span th:utext="${already}">
+            </span>
+    </div>
+    <form id="successForm" th:action="@{/users/addNew}" method="post" class="container">
+        <h1>Register to - Fleet MS</h1>
+        <label for="username"><b>First Name</b></label>
+        <input type="text" id="firstname" placeholder="Enter First Name" name="firstname" >
+
+        <label for="username"><b>Last Name</b></label>
+        <input type="text" id="lastname" placeholder="Enter Last Name" name="lastname" >
+
+        <label for="username"><b>Username</b></label>
+        <input type="text" id="username" placeholder="Enter Username" name="username" >
+
+        <label for="password"><b>Password</b></label>
+        <input type="password" id="password" placeholder="Enter Password" name="password" >
+
+        <label for="password"><b>Confirm Password</b></label>
+        <input type="password" id="confirmPassword" placeholder="Confirm Password" >
+
+        <label class="checkbox">
+            <span><a th:href="@{/login}"> Login Page</a> </span>
+        </label>
+
+        <label class="checkboxes">
+            <span> <a th:href="@{/forgot-password}"> Forgot Password?</a> </span>
+        </label>
+        <button type="submit" class="btn">Register</button>
+    </form>
+</div>
+</body>
+</html>
+
+

@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="_layout" xmlns="http://www.w3.org/1999/html">
+
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script>
+        $('document').ready(function () { // Line 1
+            $('#ddlCountryAdd').on('change', function () { // Line 2
+                $('#ddlStateAdd').empty().append('<option value="null">-SELECT-</option>'); // Line 3
+                var countryid = $(this).val(); //Line 4
+                var href = "http://localhost:8080/parameters/country/" + countryid //Line 5
+                $.get(href, function (country, status) { // Line 6
+                    var states = country.states; // Line 7
+                    for (var i = 0; i <= states.length - 1; i++) { // Line 8
+                        $('#ddlStateAdd').append('<option value="' + states[i].id + '">' + states[i].name + '</option>'); // Line 9
+                    }
+                })
+            })
+        })
+    </script>
+    <!--Hiding the username from employeeEdit form -->
+    <script>
+        $('document').ready(function() {
+                var href= $(this).attr('href');
+                $.get(href, function(employee, status) {
+                    $('#txtUsernameEdit').val(employee.username);
+                })
+        })
+    </script>
+</head>
+
+<body>
+
+<div layout:fragment="content">
+    <div class="row">
+        <div class="col-lg-12">
+            <h3 class="page-header"><i class="fa fa-laptop breadcrumb-item"></i> Employee Editing</h3>
+            <ol class="breadcrumb">
+                <li class="fa fa-home breadcrumb-item"><a th:href="@{/index}">Home</a></li>
+                <li class="fa fa-laptop breadcrumb-item"><a th:href="@{/hr}">HR Home</a></li>
+                <li class="fa fa-laptop breadcrumb-item"><a onclick="return confirm('Are you sure you want to ' +
+                     'exit without save?')" th:href="@{/employees}">Employees</a></li>
+                <li class="fa fa-laptop breadcrumb-item">Editing</li>
+            </ol>
+        </div>
+    </div>
+    <div class="container" style="width: 40%">
+        <div class="row">
+            <div class="col-lg-12">
+                <header class="panel-heading">
+                    <h2>Editing Employee Record</h2>
+                </header>
+                <section class="panel">
+                    <div class="panel-body">
+                        <form class="form-horizontal " th:action="@{'/employees/update/'+${employee.id}}" method="put">
+
+                            <input type="hidden" id="txtUsernameEdit" name="username">
+
+                            <div class="form-group">
+                                <label class="control-label col-sm-4">First Name</label>
+                                <div class="col-sm-12">
+                                    <input name="firstname" th:value="${employee.firstname}" type="text"
+                                           class="form-control">
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="control-label col-sm-4">Last Name</label>
+                                <div class="col-sm-12">
+                                    <input name="lastname" th:value="${employee.lastname}" class="form-control"
+                                           size="16"
+                                           type="text">
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="col-sm-4 col-form-label">Other Name</label>
+                                <div class="col-sm-12">
+                                    <input name="othername" th:value="${employee.othername}" class="form-control"
+                                           size="16"
+                                           type="text">
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="col-sm-4 col-form-label">Title</label>
+                                <div class="col-sm-12">
+                                    <input name="title" th:value="${employee.title}" class="form-control" size="16"
+                                           type="text">
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="col-sm-4 col-form-label">Initials</label>
+                                <div class="col-sm-12">
+                                    <input name="initials" th:value="${employee.initials}" class="form-control"
+                                           size="16"
+                                           type="text">
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="col-sm-4 col-form-label">Personal Identification Number</label>
+                                <div class="col-sm-12">
+                                    <input name="socialSecurityNumber"
+                                           th:value="${employee.personalIdentificationNumber}" class="form-control"
+                                           size="16"
+                                           type="text">
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="col-sm-4 col-form-label">Gender</label>
+                                <div class="col-sm-12">
+                                    <input name="gender" th:value="${employee.gender}" class="form-control"
+                                           size="16"
+                                           type="text">
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="col-sm-4 col-form-label">Marital Status</label>
+                                <div class="col-sm-12">
+                                    <input name="maritalStatus" th:value="${employee.maritalStatus}"
+                                           class="form-control" size="16"
+                                           type="text">
+                                </div>
+                            </div>
+
+
+                            <div class="form-group">
+                                <div class="col-lg-12">
+                                    <label for="ddlCountryAdd" class="col-sm-4 col-form-label">Country</label>
+                                    <select class="form-control" id="ddlCountryAdd" name="countryid">
+                                        <option>-SELECT-</option>
+                                        <option th:each="country : ${countries}"
+                                                th:value="${country.id}"
+                                                th:selected="(${country.id} == ${employee.countryid}?True: False)"
+                                                th:text="${country.description}">
+                                        </option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <div class="col-sm-12">
+                                    <label for="ddlStateAdd" class="col-sm-4 col-form-label">State</label>
+
+                                    <select class="form-control" id="ddlStateAdd" name="stateid">
+                                        <option>-SELECT-</option>
+                                        <option th:each="state : ${states}"
+                                                th:value="${state.id}"
+                                                th:selected="(${state.id} == ${employee.stateid}?True: False)"
+                                                th:text="${state.name}">
+                                        </option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="col-sm-4 col-form-label">Date Of Birth</label>
+                                <div class="col-sm-12">
+                                    <input name="dateOfBirth" th:value="${employee.dateOfBirth}"
+                                           class="form-control" size="16"
+                                           type="date">
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="col-sm-4 col-form-label">City</label>
+                                <div class="col-sm-12">
+                                    <input name="city" th:value="${employee.city}"
+                                           class="form-control" size="16"
+                                           type="text">
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="col-sm-4 col-form-label">Address</label>
+                                <div class="col-sm-12">
+                                    <input name="address" th:value="${employee.address}"
+                                           class="form-control" size="16"
+                                           type="text">
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="col-sm-4 col-form-label">Mobile Number</label>
+                                <div class="col-sm-12">
+                                    <input name="mobile" th:value="${employee.mobile}"
+                                           class="form-control" size="16"
+                                           type="text">
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="col-sm-4 col-form-label">E-mail Address</label>
+                                <div class="col-sm-12">
+                                    <input name="email" th:value="${employee.email}"
+                                           class="form-control" size="16"
+                                           type="text">
+                                </div>
+                            </div>
+
+                            <div class="col-lg-12">
+                                <div class="form-group">
+                                    <label for="ddlTypeAdd" class="col-sm-4 col-form-label">Type</label>
+                                    <div class="col-sm-12">
+                                        <select class="form-control" id="ddlTypeAdd" name="employeetypeid">
+                                            <option>-SELECT-</option>
+                                            <option th:each="employeeType : ${employeeTypes}"
+                                                    th:value="${employeeType.id}"
+                                                    th:text="${employeeType.description}">
+                                            </option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="ddlStatusAdd" class="col-sm-4 col-form-label">Status</label>
+                                    <div class="col-sm-12">
+                                        <select class="form-control" id="ddlStatusAdd" name="employeestatusid">
+                                            <option>-SELECT-</option>
+                                            <option th:each="employeeStatus : ${employeeStatuses}"
+                                                    th:value="${employeeStatus.id}"
+                                                    th:text="${employeeStatus.description}">
+                                            </option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="ddlJobTitleAdd" class="col-sm-4 col-form-label">Job Title</label>
+                                <div class="col-sm-12">
+                                    <select class="form-control" id="ddlJobTitleAdd" name="jobtitleid">
+                                        <option>-SELECT-</option>
+                                        <option th:each="jobTitle : ${jobTitles}"
+                                                th:value="${jobTitle.id}"
+                                                th:text="${jobTitle.description}">
+                                        </option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-4 col-form-label">Hire Date</label>
+                                <div class="col-sm-12">
+                                    <input name="hireDate" th:value="${employee.hireDate}"
+                                           class="form-control" size="16"
+                                           type="date">
+                                </div>
+                            </div>
+
+                            &nbsp;
+                            <section class="panel">
+                                <div class="panel-body">
+                                    <button type="submit"
+                                            th:href="@{/employeeAdd}"
+                                            class="btn btn-success">Save
+                                    </button>
+                                    <a th:href="@{/employees}"
+                                       class="btn btn-warning">Exit</a>
+                                </div>
+                            </section>
+                        </form>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

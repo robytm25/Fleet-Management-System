@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="_layout">
+<body>
+
+<div layout:fragment="content">
+    <section class="wrapper">
+        <div class="row">
+            <div class="col-lg-12">
+                <h3 class="page-header"><i class="fa fa-laptop breadcrumb-item"></i> Client Details</h3>
+                <ol class="breadcrumb">
+                    <li class="fa fa-home breadcrumb-item"><a th:href="@{/index}">Home</a></li>
+                    <li class="fa fa-laptop breadcrumb-item"><a th:href="@{/parameters}">Parameters Home</a></li>
+                    <li class="fa fa-laptop breadcrumb-item"><a th:href="@{/clients}">Clients</a></li>
+                    <li class="fa fa-laptop breadcrumb-item">Details</li>
+                </ol>
+            </div>
+        </div>
+        <div class="container" style="width: 40%">
+            <div class="row">
+                <div class="row justify-content-center">
+                    <div class="col-lg-12">
+                        <form class="form-horizontal" th:action="@{/clients}" method="post">
+                            <section class="panel">
+                                <header class="panel-heading">
+                                    <h2>Client Record Details</h2>
+                                </header>
+                                <div class="panel-body">
+                                    <div class="col-lg-12">
+                                        <div class="form-group">
+                                            <label for="txtNameAdd" class="col-sm-4 col-form-label">Name: </label>
+                                            <div class="col-sm-12">
+                                                <input type="text" th:value="${client.name}" class="form-control"
+                                                       id="txtNameAdd" name="name" placeholder="Name" readonly>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="txtEmailAdd" class="col-sm-4 col-form-label">E-mail:</label>
+                                            <div class="col-sm-12">
+                                                <input type="email" th:value="${client.email}" class="form-control"
+                                                       id="txtEmailAdd" name="email" placeholder="Email" readonly>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="txtWebsiteAdd" class="col-sm-4 col-form-label">Website: </label>
+                                            <div class="col-sm-12">
+                                                <input type="text" th:value="${client.website}" class="form-control"
+                                                       id="txtWebsiteAdd" name="website" placeholder="Website" readonly>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="txtAddressAdd" class="col-sm-4 col-form-label">Address:</label>
+                                            <div class="col-sm-12">
+                                                <input class="form-control" th:value="${client.address}"
+                                                       id="txtAddressAdd" name="address" placeholder="Address"
+                                                       readonly>
+                                            </div>
+                                        </div>
+                                        <div class="panel-body">
+                                            <div class="col-lg-12">
+                                                <div class="form-group">
+                                                    <label for="ddlCountryAdd"
+                                                           class="col-sm-4 col-form-label">Country: </label>
+                                                    <div class="col-sm-12">
+                                                        <select class="form-control" id="ddlCountryAdd" name="countryid"
+                                                                th:disabled="disabled">
+                                                            <option>-SELECT-</option>
+                                                            <option th:each="country : ${countries}"
+                                                                    th:value="${country.id}"
+                                                                    th:selected="(${country.id} == ${client.countryid}?True: False)"
+                                                                    th:text="${country.description}">
+                                                            </option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="ddlStateAdd" class="col-sm-4 col-form-label">State: </label>
+                                                    <div class="col-sm-12">
+                                                        <select class="form-control" id="ddlStateAdd" name="stateid"
+                                                                th:disabled="disabled">
+                                                            <option>-SELECT-</option>
+                                                            <option th:each="state : ${states}"
+                                                                    th:value="${state.id}"
+                                                                    th:selected="(${state.id} == ${client.stateid}?True: False)"
+                                                                    th:text="${state.name}">
+                                                            </option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="panel-body">
+                                        <div class="col-lg-12">
+                                            <div class="form-group">
+                                                <label for="txtCityAdd" class="col-sm-4 col-form-label">City: </label>
+                                                <div class="col-sm-12">
+                                                    <input type="text" th:value="${client.city}" class="form-control"
+                                                           id="txtCityAdd" name="city" placeholder="City" readonly>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="txtMobileAdd"
+                                                       class="col-sm-4 col-form-label">Mobile: </label>
+                                                <div class="col-sm-12">
+                                                    <input type="text" th:value="${client.mobile}" class="form-control"
+                                                           id="txtMobileAdd" name="mobile" placeholder="Mobile"
+                                                           readonly>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="txtDetailsAdd"
+                                                       class="col-sm-4 col-form-label">Details: </label>
+                                                <div class="col-sm-12">
+                                                    <input type="text" th:value="${client.details}" class="form-control"
+                                                           id="txtDetailsAdd" name="details" placeholder="Details"
+                                                           readonly>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </section>
+                            &nbsp;
+                            <section class="panel">
+                                <div class="panel-body">
+                                    <button type="submit" disabled th:href="@{/clientAdd}" class="btn btn-success">
+                                        Save
+                                    </button>
+                                    <a th:href="@{/clients}" class="btn btn-warning">Exit</a>
+                                </div>
+                            </section>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+
+</body>
+</html>

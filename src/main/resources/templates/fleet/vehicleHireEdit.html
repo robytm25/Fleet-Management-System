@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="_layout" xmlns="http://www.w3.org/1999/html">
+
+<body>
+
+<div layout:fragment="content">
+    <div class="row">
+        <div class="col-lg-12">
+            <h3 class="page-header"><i class="fa fa-laptop breadcrumb-item"></i> Vehicle Hire Editing</h3>
+            <ol class="breadcrumb">
+                <li class="fa fa-home breadcrumb-item"><a th:href="@{/index}">Home</a></li>
+                <li class="fa fa-laptop breadcrumb-item"><a th:href="@{/fleet}">Fleet Home</a></li>
+                <li class="fa fa-laptop breadcrumb-item"><a onclick="return confirm('Are you sure you want to ' +
+                     'exit without save?')" th:href="@{/vehiclehires}">Vehicle Hires</a></li>
+                <li class="fa fa-laptop breadcrumb-item">Editing</li>
+            </ol>
+        </div>
+    </div>
+    <div class="container" style="width: 70%">
+        <div class="row">
+            <div class="col-lg-12">
+                <header class="panel-heading">
+                    <h2>Edit Vehicle Hire Record</h2>
+                </header>
+                <section class="panel">
+                    <div class="panel-body">
+                        <form class="form-horizontal " th:action="@{'/vehicleHires/update/'+${vehicleHire.id}}" method="put">
+
+                            <div class="form-group">
+                                <label for="ddlVehicleHireEdit" class="col-sm-4 col-form-label">Name</label>
+                                <div class="col-sm-12">
+                                    <select class="form-control" id="ddlVehicleHireEdit" name="vehicleid" required>
+                                        <option>-SELECT-</option>
+                                        <option th:each="vehicle : ${vehicles}"
+                                                th:value="${vehicle.id}"
+                                                th:selected="(${vehicle.id} == ${vehicleHire.vehicleid}?True: False)"
+                                                th:text="${vehicle.name}">
+                                        </option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="col-sm-4 col-form-label">Date Out</label>
+                                <div class="col-sm-12">
+                                    <input type=text th:value="${#dates.format(vehicleHire.dateOut, 'dd-MM-yyyy')}"
+                                           class="form-control" name="dateOut"
+                                           id="dateOut" placeholder="DD/MM/YYYY"
+                                           onfocus="(this.type='date')" required/>
+
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="control-label col-sm-4">Time Out</label>
+                                <div class="col-sm-12">
+                                    <input type="time" th:value="${vehicleHire.timeOut}" class="form-control"
+                                           id="timeOutAdd" name="timeOut"
+                                           min="09:00" max="18:00" required>
+                                    <small>Office hours are 9am to 6pm</small>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="col-sm-4 col-form-label">Date In</label>
+                                <div class="col-sm-12">
+                                    <input type=text th:value="${#dates.format(vehicleHire.dateIn, 'dd-MM-yyyy')}"
+                                           class="form-control" name="dateIn"
+                                           id="dateIn" placeholder="DD/MM/YYYY"
+                                           onfocus="(this.type='date')" required/>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="control-label col-sm-4">Time In</label>
+                                <div class="col-sm-12">
+                                    <input type="time" th:value="${vehicleHire.timeIn}" class="form-control"
+                                           id="timeInAdd" name="timeIn"
+                                           min="09:00" max="18:00" required>
+                                    <small>Office hours are 9am to 6pm</small>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="ddlClientAdd" class="col-sm-4 col-form-label">Client</label>
+                                <div class="col-sm-12">
+                                    <select class="form-control" id="ddlClientAdd" name="clientid" required>
+                                        <option>-SELECT-</option>
+                                        <option th:each="client : ${clients}"
+                                                th:value="${client.id}"
+                                                th:selected="(${client.id} == ${vehicleHire.clientid}?True: False)"
+                                                th:text="${client.name}">
+                                        </option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="ddlLocationAdd" class="col-sm-4 col-form-label">Location</label>
+                                <div class="col-sm-12">
+                                    <select class="form-control" id="ddlLocationAdd" name="locationid" required>
+                                        <option>-SELECT-</option>
+                                        <option th:each="location : ${locations}"
+                                                th:value="${location.id}"
+                                                th:selected="(${location.id} == ${vehicleHire.locationid}?True: False)"
+                                                th:text="${location.city}">
+                                        </option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="control-label col-sm-4">Price</label>
+                                <div class="col-sm-12">
+                                    <input name="price"  th:value="${vehicleHire.price}" type="text" class="form-control" required>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="control-label col-sm-4">Remarks</label>
+                                <div class="col-sm-12">
+                                    <input name="remarks"  th:value="${vehicleHire.remarks}" type="text" class="form-control" required>
+                                </div>
+                            </div>
+
+                            &nbsp;
+                            <section class="panel">
+                                <div class="panel-body">
+                                    <button type="submit" th:href="@{/vehicleHireAdd}" class="btn btn-success">Save
+                                    </button>
+                                    <a th:href="@{/vehiclehires}" class="btn btn-warning">Exit</a>
+                                </div>
+                            </section>
+                        </form>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

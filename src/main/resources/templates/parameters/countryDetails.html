@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="_layout" xmlns="http://www.w3.org/1999/html">
+
+<body>
+
+<div layout:fragment="content">
+    <div class="row">
+        <div class="col-lg-12">
+            <h3 class="page-header"><i class="fa fa-laptop breadcrumb-item"></i> Country Details</h3>
+            <ol class="breadcrumb">
+                <li class="fa fa-home breadcrumb-item"><a th:href="@{/index}">Home</a></li>
+                <li class="fa fa-laptop breadcrumb-item"><a th:href="@{/parameters}">Parameters Home</a></li>
+                <li class="fa fa-laptop breadcrumb-item"><a th:href="@{/countries}">Country</a></li>
+                <li class="fa fa-laptop breadcrumb-item">Details</li>
+            </ol>
+        </div>
+    </div>
+    <div class="container" style="width: 40%">
+        <div class="row">
+            <div class="col-lg-12">
+                <header class="panel-heading">
+                    <h2>Country Details</h2>
+                </header>
+                <section class="panel">
+                    <div class="panel-body">
+                        <form class="form-horizontal " method="put">
+
+                            <div class="form-group">
+                                <label class="control-label col-sm-4">Description</label>
+                                <div class="col-sm-12">
+                                    <input name="description" th:value="${country.description}" readonly type="text"
+                                           class="form-control">
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="control-label col-sm-4">Capital</label>
+                                <div class="col-sm-12">
+                                    <input name="capital" th:value="${country.capital}" readonly type="text"
+                                           class="form-control" size="16">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-sm-4"> Code</label>
+                                <div class="col-sm-12">
+                                    <input name="code" th:value="${country.code}" readonly type="text"
+                                           class=" form-control"/>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-sm-4">Nationality</label>
+                                <div class="col-sm-12">
+                                    <input name="nationality" th:value="${country.nationality}" readonly type="text"
+                                           class="form-control">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-sm-4">Continent</label>
+                                <div class="col-sm-12">
+                                    <input name="continent" th:value="${country.continent}" readonly type="text"
+                                           class="form-control">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-sm-4">Acronym</label>
+                                <div class="col-sm-12">
+                                    <input name="acronym" th:value="${country.acronym}" readonly type="text"
+                                           class="form-control">
+                                </div>
+                            </div>
+                            &nbsp;
+                            <section class="panel">
+                                <div class="panel-body">
+                                    <button type="submit" disabled th:href="@{/countryAdd}" class="btn btn-success">
+                                        Save
+                                    </button>
+                                    <a th:href="@{/countries}" class="btn btn-warning">Exit</a>
+                                </div>
+                            </section>
+                        </form>
+                    </div>
+                </section>
+                &nbsp;
+                <div class="row justify-content-center">
+
+                    <header class="panel-heading">
+                        List of State in Country:  <span th:text="${country.description}"></span>
+                    </header>
+
+                    <div class="panel-body">
+                        <table class="table table-striped table-advance table-hover">
+                            <tbody>
+                            <tr>
+                                <th><i class="icon_calendar"></i> Name</th>
+                                <th><i class="icon_mail_alt"></i> Capital</th>
+                                <th><i class="icon_pin_alt"></i> Code</th>
+                            </tr>
+                            <tr th:each="state: ${country.states}">
+                                <td th:text="${state.name}"></td>
+                                <td th:text="${state.capital}"></td>
+                                <td th:text="${state.code}"></td>
+                                <td>
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+</div>
+</body>
+
+</html>

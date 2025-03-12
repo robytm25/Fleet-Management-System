@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="_layout">
+
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script language="JavaScript">
+        $('document').ready(function () {
+            $('.table #display').on('click', function (event) {
+                event.preventDefault();
+                var href = $(this).attr('href');
+                $.get(href, function (vehicleMake, status) {
+                    $('#txtId').val(vehicleMake.id);
+                    $('#txtDescription').val(vehicleMake.description);
+                    $('#txtDetails').val(vehicleMake.details);
+                })
+            })
+        })
+    </script>
+</head>
+
+<body class="vehicleMake">
+
+<div layout:fragment="content">
+    <section class="wrapperMake">
+        <div class="row">
+            <div class="col-lg-12">
+                <h3 class="page-header"><i class="fa fa-laptop breadcrumb-item"></i><b> Vehicle Make List</b></h3>
+                <ol class="breadcrumb">
+                    <li class="fa fa-home breadcrumb-item"><a th:href="@{/index}">Home</a></li>
+                    <li class="fa fa-laptop breadcrumb-item"><a th:href="@{/fleet}">Fleet Home</a></li>
+                    <li class="fa fa-laptop breadcrumb-item">Vehicle Make</li>
+                </ol>
+            </div>
+        </div>
+    </section>
+    <div class="row">
+        <div class="col-lg-12">
+            &nbsp;
+            <section class="panel" >
+
+                <div class="panel-heading" style="padding: 1%">
+                    <form class="form-inline" role="form" th:action="@{/fleet/vehicleMakeList}"  method="post" >
+                        <div class="form-group">
+                            <label class="control-label">Id</label>
+                            <input type="text" id="txtId" name="id"  size="1" readonly>
+
+                            <label class="control-label">Description</label>
+                            <input type="text" id="txtDescription" name="description" required>
+
+                            <label class="control-label col-sm-0.5">Details</label>
+                            <input type="text" id="txtDetails" name="details" required>
+
+                            <button type="submit" class="btn btn-success">Save</button>
+                            <button type="reset" class="btn btn-warning">Clear</button>
+                        </div>
+                    </form>
+                </div>
+
+                <table class="table table-striped table-advance table-hover">
+                    <tbody>
+                    <tr>
+
+                        <th><i class="icon_profile"></i> Description</th>
+                        <th><i class="icon_calendar"></i> Details</th>
+                        <th><i class="icon_mobile"></i> Action</th>
+                    </tr>
+                    <tr th:each="vehicleMake: ${vehicleMakes}">
+                        <td th:text="${vehicleMake.description}"></td>
+                        <td th:text="${vehicleMake.details}"></td>
+                        <td>
+                            <div class="btn-group" >
+                                <a xml:id="vehicleDetailsButton" class="btn btn-success btn-sm" id="display"
+                                   th:href="@{'/fleet/vehicleMakeList/'+${vehicleMake.id}}"><i class="bi bi-pencil"></i></a>
+                                <a class="btn btn-danger btn-sm"
+                                   onclick="return confirm('Are you sure you want to delete this record?')"
+                                   th:href="@{'/fleet/vehicleMakeList/delete/'+${vehicleMake.id}}"><i class="bi bi-x-circle"></i></a>
+                            </div>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </section>
+        </div>
+    </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+ xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3" lang="en">
+
+
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+    <link th:href="@{assets/css/loginPage.css}" rel="stylesheet">
+
+<body>
+<div class="bg-img">
+    <div style="text-align: center; font-size:30px; color:lawngreen; font-weight: bold;">
+            <span th:utext="${message}">
+            </span>
+    </div>
+
+    <form th:action="@{/login}" method="post" class="container">
+
+        <h1>Login - Fleet MS</h1>
+        <label for="username"><b>Username</b></label>
+        <input type="text" id="username" placeholder="Enter Username" name="username" required>
+
+        <label for="password"><b>Password</b></label>
+        <input type="password" id="password" placeholder="Enter Password" name="password" required>
+
+        <label class="checkbox">
+            <input type="checkbox" value="remember-me"> Remember me
+        </label>
+
+        <label class="checkbox2">
+            <span class="pull-right"><a th:href="@{/register}"> Forgot Password</a></span>
+        </label>
+
+        <button type="submit" class="btn">Login</button>
+
+        <a th:href="@{/register}" class="registration" role="button">Register</a>
+    </form>
+</div>
+</body>
+</html>
+
+

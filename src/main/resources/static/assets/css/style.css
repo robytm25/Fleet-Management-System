@@ -1,0 +1,1739 @@
+/**
+* Template Name: NiceAdmin - v2.2.0
+* Template URL: https://bootstrapmade.com/nice-admin-bootstrap-admin-html-template/
+* Author: BootstrapMade.com
+* License: https://bootstrapmade.com/license/
+*/
+
+/*--------------------------------------------------------------
+# General
+--------------------------------------------------------------*/
+
+
+
+
+:root {
+  scroll-behavior: smooth; 
+}
+body {
+  font-family: "Open Sans", sans-serif;
+  background-image: linear-gradient(black,black);
+
+}
+
+#bg{
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
+
+.fleet {
+  font-family: "Open Sans", sans-serif;
+  background-image: linear-gradient(black,black);
+}
+
+#fg{
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  position: absolute;
+  width: 100%;
+}
+
+
+
+.fleet .row{
+  position: relative;
+}
+
+.fleet h3 {
+  color: darkorange;
+}
+
+.fleet .wrapperFleet h3{
+  color: darkorange;
+  padding-bottom: 30px;
+
+}
+
+.fleet .row {
+  padding-top: 30px;
+  margin-left:50px;
+  margin-right:50px;
+}
+
+.accounts h3 {
+  color: darkorange;
+}
+
+.accounts .wrapperAccounts h3{
+  color: darkorange;
+  padding-bottom: 30px;
+}
+
+.vehicle .wrapperVehicle h3{
+  color: darkorange;
+}
+
+.vehicleHire .wrapperHire h3{
+  color: darkorange;
+}
+
+.vehicleMaintenance .wrapperMaintenance h3{
+  color:darkorange;
+}
+
+.vehicleMake .wrapperMake h3{
+  color:darkorange;
+}
+
+.vehicleMovement .wrapperMovement h3{
+  color: darkorange;
+}
+
+.vehicleModel .wrapperModel h3{
+  color: darkorange;
+}
+
+.vehicleStatus .wrapperStatus h3 {
+  color: darkorange;
+}
+
+.vehicleType .wrapperType h3 {
+  color: darkorange;
+}
+
+.accounts .row{
+  padding-top: 30px;
+  margin-left:50px;
+  margin-right: 50px;
+}
+
+
+.hr h3{
+  color: darkorange;
+}
+
+.hr .wrapperHR  h3{
+  color:darkorange;
+  padding-bottom: 30px;
+}
+
+.hr .row{
+  padding-top: 30px;
+  margin-left:50px;
+  margin-right: 50px;
+}
+
+
+.parameters h3{
+  color: darkorange;
+}
+
+.parameters .wrapperParameters  h3{
+  color:darkorange;
+  padding-bottom: 30px;
+}
+
+.parameters .row{
+  padding-top: 30px;
+  margin-left:50px;
+  margin-right: 50px;
+}
+
+.security h3{
+  color: darkorange;
+}
+
+.security .wrapperSecurity  h3{
+  color:darkorange;
+  padding-bottom: 30px;
+  padding-right: 400px;
+}
+
+.security .row{
+  padding-top: 30px;
+  margin-left: 400px;
+
+}
+
+.userEditRoles .userEditRows{
+  padding-top: 30px;
+}
+
+.userEditRoles .panel-heading{
+  color: darkorange;
+}
+
+.userEditRoles .userEditTable {
+  color: darkorange;
+}
+
+.userEditRoles .col-lg-6 {
+  padding-top: 30px;
+}
+
+.userEditRoles .userEditRoleTable {
+  color: darkorange;
+}
+
+.userEditRoles .assignedUserRoles {
+  text-align: center;
+  padding-top: 30px;
+  padding-bottom: 30px;
+}
+
+.indexLoginButton {
+  padding-top: 30px;
+  padding-left: 1440px;
+  text-align: center;
+  font-weight: bold;
+}
+
+
+
+
+
+
+
+.centered {
+  position: absolute;
+  top: 20%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.centered h2{
+  font-size: 3.5em;
+  color: darkorange;
+  text-align: center;
+}
+
+a { 
+  color: darkorange;
+  text-decoration: none;
+}
+
+a:hover { 
+  color: darkorange;
+  text-decoration: none;
+}
+
+h1, h2, h3, h4, h5, h6 { 
+  font-family: "Nunito", sans-serif;
+  color: darkorange;
+}
+
+
+.btn-primary {
+  color: darkorange;
+  background-color: #000;
+  border-color: darkorange;
+}
+
+.btn-warning {
+  color: black;
+  background-color: darkorange;
+}
+
+#vehicleDetailsButton {
+  background-color: blue;
+}
+
+#employeeDetailsButton{
+  background-color: blue;
+}
+
+#vehicleDetailsButton .btn-success {
+  background-color: blue;
+}
+
+#accountsDetailsButton {
+  background-color: blue;
+}
+
+#countryDetailsButton {
+  background-color: blue;
+}
+
+#locationDetailsButton {
+  background-color: blue;
+}
+
+#stateDetailsButtons {
+  background-color: blue;
+}
+
+#supplierDetailsButton{
+  background-color: blue;
+}
+
+#clientsDetailsButton {
+  background-color: blue;
+}
+
+#contactsDetailsButton {
+  background-color: blue;
+}
+
+#newButton {
+  background-color: darkorange;
+  color: black;
+}
+
+
+.btn-primary:hover{
+  background-color: black;
+  color: darkorange;
+  border-color: black;
+}
+
+
+.btn-check:focus + .btn-primary, .btn-primary:focus {
+  color: darkorange;
+  background-color: black;
+  border-color: black;
+  box-shadow: 0 0 0 .25rem rgb(255, 140, 0);
+}
+
+
+/*--------------------------------------------------------------
+# Main
+--------------------------------------------------------------*/
+#main { 
+  margin-top: 60px;
+  padding: 20px 30px;
+  transition: all 0.3s;
+}
+@media (max-width: 1890px) {
+  #main {
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    overflow-x: hidden;
+
+  }
+}
+
+/*--------------------------------------------------------------
+# Page Title
+--------------------------------------------------------------*/
+.pagetitle { 
+  margin-bottom: 10px;
+}
+.pagetitle h1 { 
+  font-size: 24px;
+  margin-bottom: 0;
+  font-weight: 600;
+  color: darkorange;
+}
+
+/*--------------------------------------------------------------
+# Back to top button
+--------------------------------------------------------------*/
+.back-to-top { 
+  position: fixed;
+  visibility: hidden;
+  opacity: 0;
+  right: 15px;
+  bottom: 15px;
+  z-index: 99999;
+  background: darkorange;
+  width: 40px;
+  height: 40px;
+  border-radius: 4px;
+  transition: all 0.4s;
+}
+.back-to-top i { 
+  font-size: 24px;
+  color: black;
+  line-height: 0;
+}
+.back-to-top:hover {
+  background: darkorange;
+}
+
+.back-to-top.active { 
+  visibility: visible;
+  opacity: 1;
+}
+
+/*--------------------------------------------------------------
+# Override some default Bootstrap stylings
+--------------------------------------------------------------*/
+ /*Dropdown menus */
+
+.revealNavbar {
+  display: none;
+}
+
+.hoverButton:hover ~ .revealNavbar , .revealNavbar:hover{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  -webkit-transition: .6s ease-in .2s;
+  transition: .1s ease-in .9s;
+
+}
+
+.hoverButton b{
+  color: darkorange;
+  font-size:20px;
+}
+
+/* Links inside the navbar */
+.mynavbar a {
+  float: left;
+  font-size: 16px;
+  color: darkorange;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+/* The dropdown container */
+.mydropdown {
+  float: left;
+  overflow: hidden;
+}
+
+/* Dropdown button */
+.mydropdown .dropbtn {
+  font-size: 20px;
+  border: none;
+  outline: none;
+  color: darkorange;
+  padding: 14px 16px;
+  background-color: inherit;
+  font-family: inherit; /* Important for vertical align on mobile phones */
+  margin: 0; /* Important for vertical align on mobile phones */
+}
+
+/* Dropdown content (hidden by default) */
+.mydropdown-content {
+  display: none;
+  position: absolute;
+  background: transparent;
+  min-width: 160px;
+  z-index: 1;
+  animation: mymove 5s infinite;
+}
+
+@keyframes mymove {
+  50% {text-shadow: 5px 10px 20px darkorange;}
+}
+
+/* Links inside the dropdown */
+.mydropdown-content a {
+  float: none;
+  color: darkorange;
+  font-size: 16px;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  text-align: left;
+  background: transparent;
+}
+
+.mydropdown-content a:hover {
+  background: transparent;
+}
+
+/* Show the dropdown menu on hover */
+.mydropdown:hover .mydropdown-content {
+  display: block;
+  background: transparent;
+}
+
+.dropdown-menu { 
+  border-radius: 4px;
+  padding: 10px 0;
+  -webkit-animation-name: dropdown-animate;
+  animation-name: dropdown-animate;
+  -webkit-animation-duration: 0.2s;
+  animation-duration: 0.2s;
+  -webkit-animation-fill-mode: both;
+  animation-fill-mode: both;
+  border: 0;
+  box-shadow: 0 5px 30px 0 rgba(82, 63, 105, 0.2);
+}
+@media (max-width: 480px) {
+  .dropdown-menu { 
+    width: 100vw ;
+  }
+}
+.dropdown-menu .dropdown-header, .dropdown-menu .dropdown-footer { 
+  text-align: center;
+  font-size: 15px;
+  padding: 10px 25px;
+}
+.dropdown-menu .dropdown-footer a { 
+  color: #444444;
+  text-decoration: underline;
+}
+.dropdown-menu .dropdown-footer a:hover { 
+  text-decoration: none;
+}
+.dropdown-menu .dropdown-divider {
+  color: darkorange;
+  margin: 0;
+}
+.dropdown-menu .dropdown-item { 
+  font-size: 14px;
+  padding: 10px 15px;
+  transition: 0.3s;
+}
+.dropdown-menu .dropdown-item i { 
+  margin-right: 10px;
+  font-size: 18px;
+  line-height: 0;
+}
+.dropdown-menu .dropdown-item:hover {
+  color: darkorange;
+}
+
+@media (min-width: 768px) {
+  .dropdown-menu-arrow::before { 
+    content: "";
+    width: 13px;
+    height: 13px;
+    background: darkorange;
+    position: absolute;
+    top: -7px;
+    right: 20px;
+    transform: rotate(45deg);
+    border-top: 1px solid darkorange;
+    border-left: 1px solid darkorange;
+  }
+}
+@-webkit-keyframes dropdown-animate {
+  0% { 
+    opacity: 0;
+  }
+  100% { 
+    opacity: 1;
+  }
+  0% { 
+    opacity: 0;
+  }
+}
+@keyframes dropdown-animate {
+  0% { 
+    opacity: 0;
+  }
+  100% { 
+    opacity: 1;
+  }
+  0% { 
+    opacity: 0;
+  }
+}
+/* Light Backgrounds */
+.bg-primary-light { 
+  background-color: black;
+  border-color: darkorange;
+}
+
+.bg-secondary-light { 
+  background-color: black;
+  border-color: darkorange;
+}
+
+.bg-success-light { 
+  background-color: black;
+  border-color: darkorange;
+}
+
+.bg-danger-light { 
+  background-color:black;
+  border-color: darkorange;
+}
+
+.bg-warning-light { 
+  background-color: black;
+  border-color: darkorange;
+}
+
+.bg-info-light { 
+  background-color: black;
+  border-color: darkorange;
+}
+
+.bg-dark-light { 
+  background-color: black;
+  border-color: darkorange;
+}
+
+/* Card */
+.card { 
+  margin-bottom: 30px;
+  border-radius: 20px;
+  box-shadow: 0 0 30px darkorange;
+  overflow: hidden;
+  background: transparent;
+}
+
+.card-header, .card-footer { 
+  border-color: darkorange;
+  background-color: darkorange;
+  color: black;
+  padding: 15px;
+}
+
+.card-title { 
+  padding: 20px 0 15px 0;
+  font-size: 18px;
+  font-weight: 500;
+  color: darkorange;
+  font-family: "Poppins", sans-serif;
+}
+.card-title span { 
+  color: black;
+  font-size: 14px;
+  font-weight: 400;
+}
+
+.card-body { 
+  padding: 0 20px 20px 20px;
+}
+
+
+
+.card-body p {
+  color: darkorange;
+}
+
+.wrapper h3{
+  font-size: 1.5em;
+  color: darkorange;
+}
+
+
+.card-img-overlay { 
+  background-color: rgba(255, 140, 0, 1);
+}
+
+/* Alerts */
+.alert-heading { 
+  font-weight: 500;
+  font-family: "Poppins", sans-serif;
+  font-size: 20px;
+}
+
+/* Close Button */
+.btn-close { 
+  background-size: 25%;
+}
+.btn-close:focus { 
+  outline: 0;
+  box-shadow: none;
+}
+
+/* Accordion */
+.accordion-item { 
+  border: 1px solid darkorange;
+}
+
+.accordion-button:focus { 
+  outline: 0;
+  box-shadow: none;
+}
+.accordion-button:not(.collapsed) { 
+  color: darkorange;
+  background-color: black;
+}
+
+.accordion-flush .accordion-button { 
+  padding: 15px 0;
+  background: none;
+  border: 0;
+}
+.accordion-flush .accordion-button:not(.collapsed) { 
+  box-shadow: none;
+  color: darkorange;
+}
+.accordion-flush .accordion-body { 
+  padding: 0 0 15px 0;
+  color: black;
+  font-size: 15px;
+}
+
+/* Breadcrumbs */
+.breadcrumb { 
+  font-size: 18px;
+  font-family: "Nunito", sans-serif;
+  color: darkorange;
+  font-weight: 600;
+  padding-left: 20px;
+}
+.breadcrumb a { 
+  color: darkorange;
+  transition: 0.3s;
+}
+.breadcrumb a:hover { 
+  color: darkorange;
+}
+.breadcrumb .breadcrumb-item::before { 
+  color: darkorange;
+}
+.breadcrumb .active { 
+  color: darkorange;
+  font-weight: 600;
+}
+
+/* Bordered Tabs */
+.nav-tabs-bordered { 
+  border-bottom: 2px solid darkorange;
+}
+.nav-tabs-bordered .nav-link { 
+  margin-bottom: -2px;
+  border: none;
+  color: darkorange;
+}
+.nav-tabs-bordered .nav-link:hover, .nav-tabs-bordered .nav-link:focus { 
+  color: darkorange;
+}
+.nav-tabs-bordered .nav-link.active { 
+  background-color: black;
+  color: darkorange;
+  border-bottom: 2px solid darkorange;
+}
+
+/*--------------------------------------------------------------
+# Header
+--------------------------------------------------------------*/
+
+.header{
+  background: none;
+}
+
+.logo { 
+  line-height: 1;
+}
+@media (min-width: 1200px) {
+  .logo { 
+    width: 280px;
+  }
+}
+.logo img { 
+  max-height: 26px;
+  margin-right: 6px;
+}
+.logo span { 
+  font-size: 26px;
+  font-weight: 700;
+  color: darkorange;
+  font-family: "Nunito", sans-serif;
+}
+
+.header {
+  transition: all 0.5s;
+  z-index: 997;
+  height: 60px;
+  box-shadow: 0 2px 20px rgba(1, 41, 112, 0.1);
+  background: none;
+  padding-left: 20px;
+  /* Toggle Sidebar Button */
+  /* Search Bar */
+
+}
+#header:hover{
+  visibility: visible;
+}
+
+.header .search-bar { 
+  min-width: 360px;
+  padding: 0 20px;
+}
+
+
+/*--------------------------------------------------------------
+# Header Nav
+--------------------------------------------------------------*/
+.header-nav ul {
+  list-style: none;
+  background: none;
+}
+.header-nav > ul {
+  margin: 0;
+  padding: 0;
+}
+.header-nav li {
+  color: darkorange;
+}
+.header-nav .notifications a {
+  color: darkorange;
+}
+
+.header-nav .nav-icon {
+  font-size: 20px;
+  color: darkorange;
+}
+.header-nav .nav-profile {
+  color: darkorange;
+}
+.header-nav .nav-profile img {
+  max-height: 36px;
+}
+.header-nav .nav-profile span { 
+  font-size: 14px;
+  font-weight: 600;
+}
+.header-nav .badge-number { 
+  position: absolute;
+  inset: 4px 6px auto auto;
+  font-weight: normal;
+  font-size: 11px;
+  padding: 3px 6px;
+}
+.header-nav .notifications .notification-item { 
+  display: flex;
+  align-items: center;
+  padding: 15px 10px;
+  transition: 0.3s;
+}
+.header-nav .notifications .notification-item i { 
+  margin: 0 20px 0 10px;
+  font-size: 24px;
+}
+.header-nav .notifications .notification-item h4 { 
+  font-size: 16px;
+  font-weight: 600;
+  margin-bottom: 5px;
+}
+.header-nav .notifications .notification-item p { 
+  font-size: 13px;
+  margin-bottom: 3px;
+  color: darkorange;
+}
+.header-nav .notifications .notification-item:hover { 
+  background-color: black;
+}
+
+.header-nav .messages a {
+  color: darkorange;
+}
+
+.header-nav .messages .message-item { 
+  padding: 15px 10px;
+  transition: 0.3s;
+}
+.header-nav .messages .message-item a { 
+  display: flex;
+}
+.header-nav .messages .message-item img { 
+  margin: 0 20px 0 10px;
+  max-height: 40px;
+}
+.header-nav .messages .message-item h4 { 
+  font-size: 16px;
+  font-weight: 600;
+  margin-bottom: 5px;
+  color: darkorange;
+}
+.header-nav .messages .message-item p { 
+  font-size: 13px;
+  margin-bottom: 3px;
+  color: darkorange;
+}
+.header-nav .messages .message-item:hover { 
+  background-color: black;
+}
+.header-nav .profile {
+  min-width: 240px;
+  padding-bottom: 0;
+  background: none;
+}
+
+.header-nav .profile a {
+  color: darkorange;
+}
+
+.header-nav .profile .dropdown-header h6 { 
+  font-size: 18px;
+  margin-bottom: 0;
+  font-weight: 600;
+  color: darkorange;
+}
+.header-nav .profile .dropdown-header span {
+  font-size: 14px;
+
+}
+.header-nav .profile .dropdown-item { 
+  font-size: 14px;
+  padding: 10px 15px;
+  transition: 0.3s;
+}
+.header-nav .profile .dropdown-item i { 
+  margin-right: 10px;
+  font-size: 18px;
+  line-height: 0;
+}
+.header-nav .profile .dropdown-item:hover { 
+  background-color: black;
+}
+
+
+@media (min-width: 1200px) {
+  #main, #footer {
+    margin-left: 0;
+    /*margin-top: 50px;*/
+  }
+}
+@media (max-width: 1890px) {
+  #layout {
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    overflow-x: hidden;
+
+  }
+}
+
+@media(min-width: 1200px){
+  #layout, #footer{
+    margin-top: 100px;
+  }
+}
+
+
+#fleet .panel{
+  flex:44.44%;
+  padding: 10px;
+  align-content: center;
+  text-align: center;
+}
+
+/*--------------------------------------------------------------
+# Dashboard
+--------------------------------------------------------------*/
+/* Filter dropdown */
+.dashboard .filter {
+  position: absolute;
+  right: 0;
+  top: 15px;
+}
+.dashboard .filter .icon {
+  color: darkorange;
+  padding-right: 20px;
+  padding-bottom: 5px;
+  transition: 0.3s;
+  font-size: 16px;
+}
+.dashboard .filter .icon:hover, .dashboard .filter .icon:focus {
+  color: darkorange;
+}
+.dashboard .filter .dropdown-header {
+  padding: 8px 15px;
+}
+.dashboard .filter .dropdown-header h6 {
+  text-transform: uppercase;
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  color: darkorange;
+  margin-bottom: 0;
+  padding: 0;
+}
+.dashboard .filter .dropdown-item {
+  padding: 8px 15px;
+}
+
+/* Info Cards */
+.dashboard .info-card {
+  padding-bottom: 10px;
+}
+.dashboard .info-card h6 {
+  font-size: 28px;
+  color: darkorange;
+  font-weight: 700;
+  margin: 0;
+  padding: 0;
+}
+.dashboard .card-icon {
+  font-size: 32px;
+  line-height: 0;
+  width: 64px;
+  height: 64px;
+  flex-shrink: 0;
+  flex-grow: 0;
+}
+.dashboard .sales-card .card-icon {
+  color: darkorange;
+  background: black;
+}
+.dashboard .revenue-card .card-icon {
+  color: darkorange;
+  background:black;
+}
+.dashboard .customers-card .card-icon {
+  color:darkorange;
+  background: black;
+}
+
+/* Activity */
+.dashboard .activity {
+  font-size: 14px;
+}
+.dashboard .activity .activity-item .activite-label {
+  color: #888;
+  position: relative;
+  flex-shrink: 0;
+  flex-grow: 0;
+  min-width: 64px;
+}
+.dashboard .activity .activity-item .activite-label::before {
+  content: "";
+  position: absolute;
+  right: -11px;
+  width: 4px;
+  top: 0;
+  bottom: 0;
+  background-color: black;
+}
+.dashboard .activity .activity-item .activity-badge {
+  margin-top: 3px;
+  z-index: 1;
+  font-size: 11px;
+  line-height: 0;
+  border-radius: 50%;
+  flex-shrink: 0;
+  border: 3px solid black;
+  flex-grow: 0;
+}
+.dashboard .activity .activity-item .activity-content {
+  padding-left: 10px;
+  padding-bottom: 20px;
+}
+.dashboard .activity .activity-item:first-child .activite-label::before {
+  top: 5px;
+}
+.dashboard .activity .activity-item:last-child .activity-content {
+  padding-bottom: 0;
+}
+
+/* News & Updates */
+.dashboard .news .post-item + .post-item {
+  margin-top: 15px;
+}
+.dashboard .news img {
+  width: 80px;
+  float: left;
+  border-radius: 5px;
+}
+.dashboard .news h4 {
+  font-size: 15px;
+  margin-left: 95px;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+.dashboard .news h4 a {
+  color: darkorange;
+  transition: 0.3s;
+}
+.dashboard .news h4 a:hover {
+  color: black;
+}
+.dashboard .news p {
+  font-size: 14px;
+  color: black;
+  margin-left: 95px;
+}
+
+/* Recent Sales */
+.dashboard .recent-sales {
+  font-size: 14px;
+  background: black;
+}
+
+.vehicle.container {
+  width: 100%;
+}
+
+.vehicle .container .table th{
+  color: darkorange;
+}
+
+.vehicle .container .table td{
+  color: darkorange;
+}
+
+.vehicleModel .container .table th{
+  color: darkorange;
+}
+
+.vehicleModel .container .table td{
+  color: darkorange;
+}
+
+.vehicleModel .form-group {
+  color: darkorange;
+}
+
+
+.vehicleMake .container .table th{
+  color: darkorange;
+}
+
+.vehicleMake .container .table td{
+  color: darkorange;
+}
+
+.vehicleMake .form-group {
+  color: darkorange;
+}
+
+
+.vehicleStatus .container .table th{
+  color: darkorange;
+}
+
+.vehicleStatus .container .table td{
+  color: darkorange;
+}
+
+.vehicleStatus .form-group {
+  color: darkorange;
+}
+
+.vehicleType .container .table th{
+  color: darkorange;
+}
+
+.vehicleType .container .table td{
+  color: darkorange;
+}
+
+.vehicleType .form-group {
+  color: darkorange;
+}
+
+
+.vehicleHire .container .table th{
+  color: darkorange;
+}
+
+.vehicleHire .container .table td{
+  color: darkorange;
+}
+
+.vehicleHire .form-group {
+  color: darkorange;
+}
+
+.vehicleMovement .container .table th{
+  color: darkorange;
+}
+
+.vehicleMovement .container .table td{
+  color: darkorange;
+}
+
+.vehicleMovement .form-group {
+  color: darkorange;
+}
+
+.vehicleMaintenance .container .table th{
+  color: darkorange;
+}
+
+.vehicleMaintenance .container .table td{
+  color: darkorange;
+}
+
+.vehicleMaintenance .form-group {
+  color: darkorange;
+}
+
+
+.form-group {
+  color:darkorange;
+  text-align: center;
+  font-weight: bold;
+}
+
+.panel {
+  padding-top: 30px;
+}
+
+.page-header {
+  padding-top: 30px;
+}
+
+.breadcrumb {
+  padding-top: 30px;
+}
+
+.employee .container .table td{
+  color: darkorange;
+}
+.employee .container .table th{
+  color: darkorange;
+}
+
+.employeeType .container .table th{
+  color: darkorange;
+}
+
+.employeeType .container .table td{
+  color: darkorange;
+}
+
+.employeeStatus .container .table th{
+  color: darkorange;
+}
+
+.employeeStatus .container .table td{
+  color: darkorange;
+}
+
+.employeeJobTitle .container .table th{
+  color: darkorange;
+}
+
+.employeeJobTitle .container .table td{
+  color: darkorange;
+}
+
+
+.transactions .container .table th{
+  color: darkorange;
+}
+.transactions .container .table td{
+  color: darkorange;
+}
+
+.transactionType .container .table th{
+  color: darkorange;
+}
+.transactionType .container .table td{
+  color: darkorange;
+}
+
+.transactionStatus .container .table th{
+  color: darkorange;
+}
+.transactionStatus .container .table td{
+  color: darkorange;
+}
+
+.table {
+  --bs-table-striped-color: none;
+  border-color: darkorange;
+}
+.table {
+  border-color: darkorange;
+}
+
+tbody, td, tfoot, th, thead, tr {
+  border-color: inherit;
+  border-style: solid;
+  border-width: 1px;
+}
+
+.client .panel .table th{
+  color: darkorange;
+}
+.client .panel .table td{
+  color: darkorange;
+}
+
+.contact .panel .table th{
+  color: darkorange;
+}
+.contact .panel .table td{
+  color: darkorange;
+}
+
+.vehicle .panel .table td{
+  color: darkorange;
+}
+.vehicle .panel .table th{
+  color: darkorange;
+}
+
+.vehicleHire .panel .table td{
+  color: darkorange;
+}
+.vehicleHire .panel .table th{
+  color: darkorange;
+}
+
+.vehicleMaintenance .panel .table td{
+  color: darkorange;
+}
+.vehicleMaintenance .panel .table th{
+  color: darkorange;
+}
+
+.vehicleModel .panel .table td{
+  color: darkorange;
+}
+.vehicleModel .panel .table th{
+  color: darkorange;
+}
+
+.vehicleMake .panel .table td{
+  color: darkorange;
+}
+.vehicleMake .panel .table th{
+  color: darkorange;
+}
+
+.employee .panel table td{
+  color: darkorange;
+}
+.employee .panel table th{
+  color: darkorange;
+}
+
+.employeeType .panel table td{
+  color: darkorange;
+}
+.employeeType .panel table th{
+  color: darkorange;
+}
+
+.employeeStatus .panel table td{
+  color: darkorange;
+}
+.employeeStatus .panel table th{
+  color: darkorange;
+}
+
+.employeeJobTitle .panel table td{
+  color: darkorange;
+}
+.employeeJobTitle .panel table th{
+  color: darkorange;
+}
+
+.role .panel table td {
+  color: darkorange;
+}
+
+.role .panel table th{
+  color: darkorange;
+}
+
+
+.user .panel table td {
+  color: darkorange;
+}
+
+.user .panel table th{
+  color: darkorange;
+}
+
+.vehicleMovement .panel .table td{
+  color: darkorange;
+}
+.vehicleMovement .panel .table th{
+  color: darkorange;
+}
+
+.vehicleStatus .panel .table td{
+  color: darkorange;
+}
+.vehicleStatus .panel .table th{
+  color: darkorange;
+}
+
+.vehicleType .panel .table td{
+  color: darkorange;
+}
+.vehicleType .panel .table th{
+  color: darkorange;
+}
+
+
+.country .panel .table th{
+  color: darkorange;
+}
+.country .panel .table td{
+  color: darkorange;
+}
+
+.location .panel .table th{
+  color: darkorange;
+}
+.location .panel .table td{
+  color: darkorange;
+}
+
+.state .panel .table th{
+  color: darkorange;
+}
+.state .panel .table td{
+  color: darkorange;
+}
+
+.supplier .panel .table th{
+  color: darkorange;
+}
+.supplier .panel .table td{
+  color: darkorange;
+}
+
+.dashboard .recent-sales .table thead {
+  background: black;
+}
+.dashboard .recent-sales .table thead th {
+  border: 0;
+  color: darkorange;
+}
+.dashboard .recent-sales .table tbody td {
+  vertical-align: middle;
+  color: darkorange;
+}
+
+.dashboard .recent-sales .dataTable-top {
+  padding: 0 0 10px 0;
+}
+.dashboard .recent-sales .dataTable-bottom {
+  padding: 10px 0 0 0;
+}
+
+/* Top Selling */
+.dashboard .top-selling {
+  font-size: 14px;
+}
+.dashboard .top-selling .table thead {
+  background: black;
+}
+.dashboard .top-selling .table thead th {
+  border: 0;
+  color: darkorange;
+}
+.dashboard .top-selling .table tbody td {
+  vertical-align: middle;
+}
+.dashboard .top-selling img {
+  border-radius: 5px;
+  max-width: 60px;
+}
+
+/*--------------------------------------------------------------
+# Icons list page
+--------------------------------------------------------------*/
+.iconslist {
+  display: grid;
+  max-width: 100%;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 1.25rem;
+  padding-top: 15px;
+}
+.iconslist .icon {
+  background-color: #fff;
+  border-radius: 0.25rem;
+  text-align: center;
+  color: #012970;
+  padding: 15px 0;
+}
+.iconslist i {
+  margin: 0.25rem;
+  font-size: 2.5rem;
+}
+.iconslist .label {
+  font-family: var(--bs-font-monospace);
+  display: inline-block;
+  width: 100%;
+  overflow: hidden;
+  padding: 0.25rem;
+  font-size: 12px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  color: #666;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.vehicle .table th , td{
+  color: darkorange;
+}
+
+
+.row{
+  display: flex;
+  align-content: center;
+  text-align: center;
+}
+
+
+.column {
+  flex:33.33%;
+  padding: 20px;
+  align-content: center;
+  text-align: center;
+}
+
+/*--------------------------------------------------------------
+# Profie Page
+--------------------------------------------------------------*/
+.profile .profile-card img {
+  max-width: 120px;
+}
+.profile .profile-card h2 {
+  font-size: 24px;
+  font-weight: 700;
+  color: darkorange;
+  margin: 10px 0 0 0;
+}
+.profile .profile-card h3 {
+  font-size: 18px;
+}
+.profile .profile-card .social-links a {
+  font-size: 20px;
+  display: inline-block;
+  color: darkorange;
+  line-height: 0;
+  margin-right: 10px;
+  transition: 0.3s;
+}
+.profile .profile-card .social-links a:hover {
+  color: #012970;
+}
+.profile .profile-overview .row {
+  margin-bottom: 20px;
+  font-size: 15px;
+  padding-right: 250px;
+}
+.profile .profile-overview .card-title {
+  color: darkorange;
+  padding-top: 50px;
+  padding-bottom: 50px;
+}
+.profile .profile-overview .label {
+  font-weight: 600;
+  color: darkorange;
+}
+.profile .profile-edit label {
+  font-weight: 600;
+  color: darkorange;
+}
+.profile .profile-edit img {
+  max-width: 120px;
+}
+
+@media(min-width: 1200px){
+  #profile, #footer{
+    margin-top: 100px;
+  }
+}
+
+.profile {
+  margin-top: 100px;
+  text-align: center;
+  font-weight: bold;
+  color: darkorange;
+}
+
+.profile .col-xl-4{
+  flex: auto;
+  width: 100%;
+  padding-left: 350px;
+  padding-right: 350px;
+
+}
+
+.profile .profileContent .col-lg-3 {
+  color: darkorange;
+}
+
+.profile .profileOverBlack {
+  color: darkorange;
+}
+
+
+
+.profile .profileContent h3{
+  color: darkorange;
+}
+
+.profile.profileContent h2{
+  color: darkorange;
+}
+
+.profile .col-xl-8 {
+  flex: auto;
+  width: 100%;
+  padding-left: 150px;
+  padding-right: 150px;
+  color: darkorange;
+  padding-top: 50px;
+}
+
+.profile .profile-overview{
+  color: darkorange;
+}
+
+/*--------------------------------------------------------------
+# F.A.Q Page
+--------------------------------------------------------------*/
+.faq .basic h6 {
+  font-size: 18px;
+  font-weight: 600;
+  color: #4154f1;
+}
+.faq .basic p {
+  color: #6980aa;
+}
+
+/*--------------------------------------------------------------
+# Contact
+--------------------------------------------------------------*/
+.contact .info-box {
+  padding: 28px 30px;
+}
+.contact .info-box i {
+  font-size: 38px;
+  line-height: 0;
+  color: #4154f1;
+}
+.contact .info-box h3 {
+  font-size: 20px;
+  color: #012970;
+  font-weight: 700;
+  margin: 20px 0 10px 0;
+}
+.contact .info-box p {
+  padding: 0;
+  line-height: 24px;
+  font-size: 14px;
+  margin-bottom: 0;
+}
+.contact .php-email-form .error-message {
+  display: none;
+  color: #fff;
+  background: #ed3c0d;
+  text-align: left;
+  padding: 15px;
+  margin-bottom: 24px;
+  font-weight: 600;
+}
+.contact .php-email-form .sent-message {
+  display: none;
+  color: #fff;
+  background: #18d26e;
+  text-align: center;
+  padding: 15px;
+  margin-bottom: 24px;
+  font-weight: 600;
+}
+.contact .php-email-form .loading {
+  display: none;
+  background: #fff;
+  text-align: center;
+  padding: 15px;
+  margin-bottom: 24px;
+}
+.contact .php-email-form .loading:before {
+  content: "";
+  display: inline-block;
+  border-radius: 50%;
+  width: 24px;
+  height: 24px;
+  margin: 0 10px -6px 0;
+  border: 3px solid #18d26e;
+  border-top-color: #eee;
+  -webkit-animation: animate-loading 1s linear infinite;
+  animation: animate-loading 1s linear infinite;
+}
+.contact .php-email-form input, .contact .php-email-form textarea {
+  border-radius: 0;
+  box-shadow: none;
+  font-size: 14px;
+}
+.contact .php-email-form input:focus, .contact .php-email-form textarea:focus {
+  border-color: #4154f1;
+}
+.contact .php-email-form input {
+  padding: 10px 15px;
+}
+.contact .php-email-form textarea {
+  padding: 12px 15px;
+}
+.contact .php-email-form button[type=submit] {
+  background: #4154f1;
+  border: 0;
+  padding: 10px 30px;
+  color: #fff;
+  transition: 0.4s;
+  border-radius: 4px;
+}
+.contact .php-email-form button[type=submit]:hover {
+  background: #5969f3;
+}
+@-webkit-keyframes animate-loading {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+@keyframes animate-loading {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/*--------------------------------------------------------------
+# Error 404
+--------------------------------------------------------------*/
+.error-404 {
+  padding: 30px;
+}
+.error-404 h1 {
+  font-size: 180px;
+  font-weight: 700;
+  color: #4154f1;
+  margin-bottom: 0;
+  line-height: 150px;
+}
+.error-404 h2 {
+  font-size: 24px;
+  font-weight: 700;
+  color: #012970;
+  margin-bottom: 30px;
+}
+.error-404 .btn {
+  background: #51678f;
+  color: #fff;
+  padding: 8px 30px;
+}
+.error-404 .btn:hover {
+  background: #3e4f6f;
+}
+@media (min-width: 992px) {
+  .error-404 img {
+    max-width: 50%;
+  }
+}
+
+/*--------------------------------------------------------------
+# Footer
+--------------------------------------------------------------*/
+.footer {
+  padding: 20px 0;
+  font-size: 14px;
+  transition: all 0.3s;
+  border-top: 1px solid #cddfff;
+}
+.footer .copyright {
+  text-align: center;
+  color: darkorange;
+}
+.footer .credits {
+  padding-top: 5px;
+  text-align: center;
+  font-size: 13px;
+  color: darkorange;
+}

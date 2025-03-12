@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="_layout">
+
+
+<body class="vehicleMovement">
+
+<div layout:fragment="content">
+    <section class="wrapperMovement">
+        <div class="row">
+            <div class="col-lg-12">
+                <h3 class="page-header"><i class="fa fa-laptop breadcrumb-item"></i> <b>Vehicle Movement List</b></h3>
+                <ol class="breadcrumb">
+                    <li class="fa fa-home breadcrumb-item"><a th:href="@{/index}">Home</a></li>
+                    <li class="fa fa-laptop breadcrumb-item"><a th:href="@{/fleet}">Fleet Home</a></li>
+                    <li class="fa fa-laptop breadcrumb-item">Movements List</li>
+                </ol>
+            </div>
+        </div>
+    </section>
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="panel-body">
+                <a id="newButton" th:href="@{/vehicleMovementAdd}" class="btn btn-success">
+                    <b>New Movement</b>
+                </a>
+            </div>
+            &nbsp;
+            <section class="panel">
+                <table class="table table-striped table-advance table-hover">
+                    <tbody>
+                    <tr>
+                        <th><i class="icon_profile"></i> Name</th>
+                        <th><i class="icon_calendar"></i> Starting Point</th>
+                        <th><i class="icon_calendar"></i> Starting Date</th>
+                        <th><i class="icon_calendar"></i> Ending Point</th>
+                        <th><i class="icon_calendar"></i> Ending Date</th>
+                        <th><i class="icon_calendar"></i> Remarks</th>
+                        <th><i class="icon_cogs"></i> Action</th>
+                    </tr>
+                    <tr th:each="vehicleMovement: ${vehicleMovements}">
+                        <td th:text="${vehicleMovement.vehicle.name}"></td>
+                        <td th:text="${vehicleMovement.location1.city}"></td>
+                        <td th:text="${#dates.format(vehicleMovement.date1, 'dd-MM-yyyy')}"></td>
+                        <td th:text="${vehicleMovement.location2.city}"></td>
+                        <td th:text="${#dates.format(vehicleMovement.date2, 'dd-MM-yyyy')}"></td>
+                        <td th:text="${vehicleMovement.remarks}"></td>
+                        <td>
+                            <div class="btn-group" role="group">
+                                <a id="vehicleDetailsButton" type="button" class="btn btn-success btn-sm"
+                                   th:href="@{'/vehicleMovementDetails/'+${vehicleMovement.id}}"><i class="bi bi-pencil"></i></a>
+                                <a class="btn btn-success btn-sm"
+                                   th:href="@{'/vehicleMovementEdit/'+${vehicleMovement.id}}"><i class="bi bi-check-circle"></i></a>
+                                <a class="btn btn-danger btn-sm"
+                                   onclick="return confirm('Are you sure you want to delete this record?')"
+                                   th:href="@{'/vehicleMovements/delete/'+${vehicleMovement.id}}"><i class="bi bi-x-circle"></i></a>
+                            </div>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </section>
+        </div>
+    </div>
+</div>
+</body>
+</html>

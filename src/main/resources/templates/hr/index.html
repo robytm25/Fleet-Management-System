@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="_layout">
+
+
+<body class="hr">
+
+<div layout:fragment="content">
+
+    <section class="wrapperHR">
+        <div class="row">
+            <div class="col-lg-12">
+                <h3 class="page-header"><i class="fa fa-laptop breadcrumb-item"></i> <b>HR List</b></h3>
+            </div>
+        </div>
+    </section>
+
+    <div class="row">
+        <div class="col-lg-4">
+            <section class="panel">
+                <div class="panel-body">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title"><h3><b>Employees</b></h3></h5>
+                            <p class="card-text">List of all Employees in this Company.</p>
+                            <a th:href="@{/employees}" class="btn btn-primary">Manage Employees</a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+        <div class="col-lg-4">
+            <section class="panel">
+                <div class="panel-body">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title"><h3><b>Employee Types</b></h3></h5>
+                            <p class="card-text">Add new, visualize, get details, edit or delete Employee Types.</p>
+                            <a th:href="@{/hr/employeeTypeList}" class="btn btn-primary">Manage Employee Types</a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+        <div class="col-lg-4">
+            <section class="panel">
+                <div class="panel-body">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title"><h3><b>Employee Status</b></h3></h5>
+                            <p class="card-text">Add new, visualize, get details, edit or delete Employee Status.</p>
+                            <a th:href="@{/hr/employeeStatusList}" class="btn btn-primary">Manage Employee
+                                Status</a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+
+        <div class="row">
+        <div class="col-lg-4">
+            <section class="panel">
+                <div class="panel-body">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title"><h3><b>Job Titles</b></h3></h5>
+                            <p class="card-text">Add new, visualize, get details, edit or delete Job Titles.</p>
+                            <a th:href="@{/hr/jobTitleList}" class="btn btn-primary">Manage Job Roles</a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+</div>
+</body>
+</html>

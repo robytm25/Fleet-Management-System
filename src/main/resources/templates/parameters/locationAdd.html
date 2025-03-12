@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="_layout">
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script>
+        $('document').ready(function () { // Line 1
+            $('#ddlCountryAdd').on('change',function () { // Line 2
+                $('#ddlStateAdd').empty().append('<option value="null">-SELECT-</option>'); // Line 3
+                var countryid = $(this).val(); //Line 4
+                var href = "http://localhost:8080/parameters/country/" + countryid //Line 5
+                $.get(href, function (country, status) { // Line 6
+                    var states = country.states; // Line 7
+                    for (var i = 0; i <= states.length-1; i++) { // Line 8
+                        $('#ddlStateAdd').append('<option value="' + states[i].id + '">' + states[i].name + '</option>'); // Line 9
+                    }
+                })
+            })
+        })
+    </script>
+</head>
+<body>
+<div layout:fragment="content">
+    <section class="wrapper">
+        <div class="row">
+            <div class="col-lg-12">
+                <h3 class="page-header"><i class="fa fa-laptop breadcrumb-item"></i> Location Add</h3>
+                <ol class="breadcrumb">
+                    <li class="fa fa-home breadcrumb-item"><a th:href="@{/index}">Home</a></li>
+                    <li class="fa fa-laptop breadcrumb-item"><a th:href="@{/parameters}">Parameters Home</a></li>
+                    <li class="fa fa-laptop breadcrumb-item">Locations</li>
+                </ol>
+            </div>
+        </div>
+        <div class="container" style="width: 40%">
+            <div class="row justify-content-center">
+                <form class="form-horizontal" th:action="@{/locations}" method="post">
+                    <section class="panel">
+                        <header class="panel-heading">
+                            <h2>Add New Location Record</h2>
+                        </header>
+                        <div class="panel-body">
+                            <div class="form-group">
+                                <label for="cityAdd" class="col-form-label col-sm-4">City:</label>
+                                <div class="col-sm-12">
+                                    <input type="text" class="form-control" id="cityAdd" name="city">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="addressAdd" class="col-form-label col-sm-4">Address:</label>
+                                <div class="col-sm-12">
+                                    <input type="text" class="form-control" id="addressAdd" name="address">
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="ddlCountryAdd" class="col-form-label col-sm-4">Country: </label>
+                                <div class="col-sm-12">
+                                    <select class="form-control" id="ddlCountryAdd" name="countryid">
+                                        <option th:value="${null}">-SELECT-</option>
+                                        <option th:each="country : ${countries}"
+                                                th:value="${country.id}"
+                                                th:text="${country.description}">
+                                        </option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="ddlStateAdd" class="col-form-label col-sm-4">State: </label>
+                                <div class="col-sm-12">
+                                    <select class="form-control" id="ddlStateAdd" name="stateid">
+                                        <option th:value="${null}">-SELECT-</option>
+                                        <option th:each="state: ${states}"
+                                                th:value="${state.id}"
+                                                th:text="${state.name}">
+                                        </option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    &nbsp;
+                    <section class="panel">
+                        <div class="panel-body">
+                            <button type="submit" th:href="@{/locationAdd}" class="btn btn-success">Save</button>
+                            <a th:href="@{/locations}" class="btn btn-warning">Exit</a>
+                        </div>
+                    </section>
+                </form>
+            </div>
+        </div>
+    </section>
+</div>
+</body>
+</html>

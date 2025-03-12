@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="_layout">
+
+
+<body class="employee">
+
+<div layout:fragment="content">
+    <section class="wrapper">
+        <div class="row">
+            <div class="col-lg-12">
+                <h3 class="page-header"><i class="fa fa-laptop breadcrumb-item"></i> Employees List</h3>
+                <ol class="breadcrumb">
+                    <li class="fa fa-home breadcrumb-item"><a th:href="@{/index}">Home</a></li>
+                    <li class="fa fa-laptop breadcrumb-item"><a th:href="@{/hr}">HR Home</a></li>
+                    <li class="fa fa-laptop breadcrumb-item">Employees List</li>
+                </ol>
+            </div>
+        </div>
+    </section>
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="panel-body">
+                <a id="newButton" th:href="@{/employeeAdd}" class="btn btn-success">
+                    <b>New Employee </b>
+                </a>
+            </div>
+        </div>
+    </div>
+            &nbsp;
+            <section class="panel">
+                <table class="table table-striped table-advance table-hover">
+                    <tbody>
+                    <tr>
+
+                        <th>Photo</th>
+                        <th>Username</th>
+                        <th><i class="icon_profile"></i>Full Name</th>
+                        <th><i class="icon_calendar"></i> Gender</th>
+                        <th><i class="icon_calendar"></i> Job Title</th>
+                        <th><i class="icon_calendar"></i> Type</th>
+                        <th><i class="icon_calendar"></i> Status</th>
+                        <th><i class="icon_mobile"></i>  Hire Date</th>
+                        <th><i class="icon_pin_alt"></i> Country</th>
+                        <th><i class="icon_mobile"></i> State</th>
+                        <th><i class="icon_mobile"></i>Date of Birth</th>
+                        <th><i class="icon_cogs"></i> Action</th>
+                    </tr>
+                    <tr th:each="employee: ${employees}">
+                        <td>
+                        <a  id="photoButton" th:href="@{'/assets/img/photos/' + ${employee.username} +'.jpg'}">
+                            <img width="50" height="50" th:src="@{'/assets/img/photos/' + ${employee.username} +'.jpg'}"
+                                 data-toggle="modal" data-target="#photoModal"></a>
+                        </td>
+                        <td><a th:text="${employee.username} ?: 'Check'"
+                               th:href="@{/employees/assignUsername/(id=${employee.id})}"></a></td>
+                        <td th:text="${employee.firstname} + ' ' + ${employee.lastname}">Fullname</td>
+                        <td th:text="${employee.gender}"></td>
+                        <td th:text="${employee.jobTitle.description}"></td>
+                        <td th:text="${employee.employeeType.description}"></td>
+                        <td th:text="${employee.employeeStatus.description}"></td>
+                        <td th:text="${#dates.format(employee.hireDate, 'dd-MM-yyyy')}"></td>
+                        <td th:text="${employee.country.description}"></td>
+                        <td th:text="${employee.state.name}"></td>
+                        <td th:text="${#dates.format(employee.dateOfBirth, 'dd-MM-yyyy')}"></td>
+                        <td>
+                            <div class="btn-group" role="group">
+                                <a id=employeeDetailsButton type="button" class="btn btn-success btn-sm"
+                                   th:href="@{'/employeeDetails/'+${employee.id}}"><i class="bi bi-pencil"></i></a>
+                                <a class="btn btn-success btn-sm"
+                                   th:href="@{'/employeeEdit/'+${employee.id}}"><i class="bi bi-check-circle"></i></a>
+                                <a class="btn btn-danger btn-sm"
+                                   onclick="return confirm('Are you sure you want to delete this record?')"
+                                   th:href="@{'/employees/delete/'+${employee.id}}"><i class="bi bi-x-circle"></i></a>
+                            </div>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+
+                <!-- Modal -->
+                <div class="modal fade" id="photoModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-body">
+                                <img id="patientPhoto" src="" width="100%" height="100%" />
+                            </div>
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        </div>
+                    </div>
+                </div>
+                <script>
+                    $('.table #photoButton').on('click', function (event) {
+                        event.preventDefault();
+                        var href = $(this).attr('href');
+                        $('#photoModal #patientPhoto').attr('src', href);
+                        $('#photoModal').modal('show');
+                    });
+                </script>
+            </section>
+        </div>
+</body>
+</html>

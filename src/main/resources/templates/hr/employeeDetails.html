@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="_layout" xmlns="http://www.w3.org/1999/html">
+
+<body>
+
+<div layout:fragment="content">
+    <div class="row">
+        <div class="col-lg-12">
+            <h3 class="page-header"><i class="fa fa-laptop breadcrumb-item"></i> Employee Details</h3>
+            <ol class="breadcrumb">
+                <li class="fa fa-home breadcrumb-item"><a th:href="@{/index}">Home</a></li>
+                <li class="fa fa-laptop breadcrumb-item"><a th:href="@{/hr}">HR Home</a></li>
+                <li class="fa fa-laptop breadcrumb-item"><a th:href="@{/employees}">Employees</a></li>
+                <li class="fa fa-laptop breadcrumb-item">Details</li>
+            </ol>
+        </div>
+    </div>
+    <div class="container" style="width: 40%">
+        <div class="row">
+            <div class="col-lg-12">
+                <header class="panel-heading">
+                    <h2>Employee Details</h2>
+                </header>
+                <section class="panel">
+                    <div class="panel-body">
+                        <form class="form-horizontal " method="put">
+
+                            <div class="form-group">
+                                <label class="control-label col-sm-4">City</label>
+                                <div class="col-sm-12">
+                                    <input name="city" th:value="${employee.city}" readonly type="text"
+                                           class="form-control">
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="control-label col-sm-4">Address</label>
+                                <div class="col-sm-12">
+                                    <input name="address" th:value="${employee.address}" readonly type="text"
+                                           class="form-control" size="16">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-sm-4">Mobile Number</label>
+                                <div class="col-sm-12">
+                                    <input name="mobile" th:value="${employee.mobile}" readonly type="text"
+                                           class=" form-control"/>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-sm-4">Email Address</label>
+                                <div class="col-sm-12">
+                                    <input name="email" th:value="${employee.email}" readonly type="text"
+                                           class="form-control">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-sm-4">Personal Identification Number</label>
+                                <div class="col-sm-12">
+                                    <input name="socialSecurityNumber" th:value="${employee.personalIdentificationNumber}" readonly type="text"
+                                           class="form-control">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-sm-4">Other Name</label>
+                                <div class="col-sm-12">
+                                    <input name="otherName" th:value="${employee.othername}" readonly type="text"
+                                           class="form-control">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-sm-4">Title</label>
+                                <div class="col-sm-12">
+                                    <input name="title" th:value="${employee.title}" readonly type="text"
+                                           class="form-control">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-sm-4">Initials</label>
+                                <div class="col-sm-12">
+                                    <input name="initials" th:value="${employee.initials}" readonly type="text"
+                                           class="form-control">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-sm-4">Marital Status</label>
+                                <div class="col-sm-12">
+                                    <input name="maritalStatus" th:value="${employee.maritalStatus}" readonly type="text"
+                                           class="form-control">
+                                </div>
+                            </div>
+
+                            &nbsp;
+                            <section class="panel">
+                                <div class="panel-body">
+                                    <button type="submit" disabled th:href="@{/employeeAdd}" class="btn btn-success">
+                                        Save
+                                    </button>
+                                    <a th:href="@{/employees}" class="btn btn-warning">Exit</a>
+                                </div>
+                            </section>
+                        </form>
+                    </div>
+                </section>
+                &nbsp;
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

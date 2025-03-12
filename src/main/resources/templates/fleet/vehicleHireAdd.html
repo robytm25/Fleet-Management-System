@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="_layout" xmlns="http://www.w3.org/1999/html">
+
+<body>
+
+<div layout:fragment="content">
+    <div class="row">
+        <div class="col-lg-12">
+            <h3 class="page-header"><i class="fa fa-laptop breadcrumb-item"></i> Vehicle Hire Add</h3>
+            <ol class="breadcrumb">
+                <li class="fa fa-home breadcrumb-item"><a th:href="@{/index}">Home</a></li>
+                <li class="fa fa-laptop breadcrumb-item"><a th:href="@{/fleet}">Fleet Home</a></li>
+                <li class="fa fa-laptop breadcrumb-item"><a th:href="@{/vehiclehires}">Vehicle Hire List</a></li>
+            </ol>
+        </div>
+    </div>
+    <div class="container" style="width: 70%">
+        <div class="row">
+            <div class="col-lg-12">
+                <header class="panel-heading">
+                    <h2>Add New Hire Record</h2>
+                </header>
+                <section class="panel">
+                    <div class="panel-body">
+                        <form class="form-horizontal " th:action="@{/vehiclehires}" method="post">
+
+                            <div class="form-group">
+                                <label for="ddlVehicleHireAdd" class="col-sm-4 col-form-label">Name</label>
+                                <div class="col-sm-12">
+                                    <select class="form-control" id="ddlVehicleHireAdd" name="vehicleid" required>
+                                        <option>-SELECT-</option>
+                                        <option th:each="vehicle : ${vehicles}"
+                                                th:value="${vehicle.id}"
+                                                th:text="${vehicle.name}">
+                                        </option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="col-sm-4 col-form-label">Date Out</label>
+                                <div class="col-sm-12">
+                                    <input type=Date class="form-control" name="dateOut"
+                                           id="dateOut" required/>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="control-label col-sm-4">Time Out</label>
+                                <div class="col-sm-12">
+                                    <input type="time" class="form-control" id="timeOutAdd" name="timeOut"
+                                           min="09:00" max="18:00" required>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="col-sm-4 col-form-label">Date In</label>
+                                <div class="col-sm-12">
+                                    <input type=Date class="form-control" name="dateIn"
+                                           id="dateIn" required/>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="control-label col-sm-4">Time In</label>
+                                <div class="col-sm-12">
+                                    <input type="time" class="form-control" id="timeInAdd" name="timeIn"
+                                           min="09:00" max="18:00" required>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="ddlClientAdd" class="col-sm-4 col-form-label">Client</label>
+                                <div class="col-sm-12">
+                                    <select class="form-control" id="ddlClientAdd" name="clientid" required>
+                                        <option>-SELECT-</option>
+                                        <option th:each="client : ${clients}"
+                                                th:value="${client.id}"
+                                                th:text="${client.name}">
+                                        </option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="ddlLocationAdd" class="col-sm-4 col-form-label">Location</label>
+                                <div class="col-sm-12">
+                                    <select class="form-control" id="ddlLocationAdd" name="locationid" required>
+                                        <option>-SELECT-</option>
+                                        <option th:each="location : ${locations}"
+                                                th:value="${location.id}"
+                                                th:text="${location.city}">
+                                        </option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="control-label col-sm-4">Price</label>
+                                <div class="col-sm-12">
+                                    <input name="price" type="text" class="form-control" required>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="control-label col-sm-4">Remarks</label>
+                                <div class="col-sm-12">
+                                    <input name="remarks" type="text" class="form-control" required>
+                                </div>
+                            </div>
+
+                            &nbsp;
+                            <section class="panel">
+                                <div class="panel-body">
+                                    <button type="submit" th:href="@{/vehicleHireAdd}" class="btn btn-success">Save
+                                    </button>
+                                    <a th:href="@{/vehiclehires}" class="btn btn-warning">Exit</a>
+                                </div>
+                            </section>
+                        </form>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

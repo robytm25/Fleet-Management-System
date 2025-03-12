@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="_layout">
+
+
+<body class="vehicle">
+
+<div layout:fragment="content">
+    <section class="wrapperVehicle">
+        <div class="row">
+            <div class="col-lg-12">
+                <h3 class="page-header"><i class="fa fa-laptop breadcrumb-item"></i> <b>Vehicles List</b></h3>
+                <ol class="breadcrumb">
+                    <li class="fa fa-home breadcrumb-item"><a th:href="@{/index}">Home</a></li>
+                    <li class="fa fa-laptop breadcrumb-item"><a th:href="@{/fleet}">Vehicle Home</a></li>
+                    <li class="fa fa-laptop breadcrumb-item">Vehicles List</li>
+                </ol>
+            </div>
+        </div>
+    </section>
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="panel-body">
+                <a id="newButton" th:href="@{/vehicleAdd}" class="btn btn-success">
+                    <b>New Vehicle</b>
+                </a>
+            </div>
+            &nbsp;
+            <section class="panel">
+                <table class="table table-striped table-advance table-hover">
+                    <tbody>
+                    <tr>
+                        <th><i class="icon_profile"></i>Name</th>
+                        <th><i class="icon_calendar"></i>Type</th>
+                        <th><i class="icon_calendar"></i>Vehicle Number</th>
+                        <th><i class="icon_calendar"></i>Registration Date</th>
+                        <th><i class="icon_calendar"></i>Acquisition Date</th>
+                        <th><i class="icon_pin_alt"></i>Vehicle Make</th>
+                        <th><i class="icon_mobile"></i>Power</th>
+                        <th><i class="icon_mobile"></i>Fuel Capacity</th>
+                        <th><i class="icon_mobile"></i>Status</th>
+                        <th><i class="icon_mobile"></i>Net Weight</th>
+                        <th><i class="icon_mobile"></i>In Charge</th>
+                        <th><i class="icon_mobile"></i>Vehicle Model</th>
+                        <th><i class="icon_mobile"></i>Current Location</th>
+                        <th><i class="icon_mobile"></i>Remarks</th>
+                        <th><i class="icon_cogs"></i>Action</th>
+                    </tr>
+                    <tr th:each="vehicle: ${vehicles}">
+                        <td th:text="${vehicle.name}"></td>
+                        <td th:text="${vehicle.vehicleType.description}"></td>
+                        <td th:text="${vehicle.vehicleNumber}"></td>
+                        <td th:text="${#dates.format(vehicle.registrationDate, 'dd-MM-yyyy')}"></td>
+                        <td th:text="${#dates.format(vehicle.acquisitionDate, 'dd-MM-yyyy')}"></td>
+                        <td th:text="${vehicle.vehicleMake.description}"></td>
+                        <td th:text="${vehicle.power}"></td>
+                        <td th:text="${vehicle.fuelCapacity}"></td>
+                        <td th:text="${vehicle.vehicleStatus.description}"></td>
+                        <td th:text="${vehicle.netWeight}"></td>
+                        <td th:text="${vehicle.inCharge.fullName}"></td>
+                        <td th:text="${vehicle.vehicleModel.description}"></td>
+                        <td th:text="${vehicle.currentLocation.city}"></td>
+                        <td th:text="${vehicle.remarks}"></td>
+                        <td>
+                            <div class="btn-group" role="group">
+                                <a id="vehicleDetailsButton" type="button" class="btn btn-success btn-sm"
+                                   th:href="@{'/vehicleDetails/'+${vehicle.id}}"><i class="bi bi-pencil"></i></a>
+                                <a class="btn btn-success btn-sm"
+                                   th:href="@{'/vehicleEdit/'+${vehicle.id}}"><i class="bi bi-check-circle"></i></a>
+                                <a class="btn btn-danger btn-sm"
+                                   onclick="return confirm('Are you sure you want to delete this record?')"
+                                   th:href="@{'/vehicles/delete/'+${vehicle.id}}"><i class="bi bi-x-circle"></i></a>
+                            </div>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </section>
+        </div>
+    </div>
+</div>
+</body>
+</html>
